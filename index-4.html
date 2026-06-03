@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✈️ Bucket List 2050 — Delhi · Solo Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#060810;--card:#0E1120;--card2:#131728;--border:rgba(255,255,255,0.07);
+  --gold:#F5C842;--gold2:#E8A020;--blue:#4A90E2;--green:#3ECF8E;--red:#E05252;
+  --purple:#9B6DFF;--orange:#FF8C42;--text:#F0F0F5;--muted:#6B7280;--sub:#9CA3AF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--text);min-height:100vh;}
+.hero{background:linear-gradient(160deg,#0A0E1F 0%,#060810 60%);padding:50px 20px 40px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(245,200,66,0.12) 0%,transparent 70%);pointer-events:none;}
+.pill{display:inline-block;background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:30px;margin-bottom:20px;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,7vw,72px);font-weight:800;line-height:1.05;margin-bottom:10px;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{color:var(--sub);font-size:14px;margin-bottom:20px;}
+.info-box{display:inline-flex;flex-wrap:wrap;gap:20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 24px;justify-content:center;}
+.ib .ib-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.ib .ib-v{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--gold);}
+.strip{background:linear-gradient(90deg,#1A1200,#0E1120,#0A1A0A);border-top:2px solid var(--gold2);border-bottom:1px solid var(--border);padding:0;display:flex;overflow-x:auto;}
+.strip-item{flex:1;min-width:140px;padding:16px 20px;text-align:center;border-right:1px solid var(--border);}
+.strip-item:last-child{border-right:none}
+.strip-item .sl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.strip-item .sv{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;}
+.sv.gold{color:var(--gold)}.sv.green{color:var(--green)}.sv.blue{color:var(--blue)}
+.controls{background:var(--card);padding:16px 20px;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;}
+.filter-btn{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--sub);padding:7px 16px;border-radius:20px;font-size:12px;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);border-color:var(--gold);color:#000;font-weight:600;}
+.search-inp{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);padding:8px 18px;border-radius:20px;font-size:13px;min-width:200px;outline:none;font-family:'Inter',sans-serif;transition:border-color 0.2s;}
+.search-inp:focus{border-color:var(--gold);}
+.search-inp::placeholder{color:var(--muted);}
+.sort-sel{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--sub);padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;outline:none;}
+.grid-wrap{padding:24px 16px 60px;max-width:1300px;margin:0 auto;}
+.results-info{color:var(--muted);font-size:12px;margin-bottom:16px;letter-spacing:0.5px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;animation:pop 0.35s ease both;position:relative;}
+.card:hover{transform:translateY(-5px);border-color:rgba(245,200,66,0.3);box-shadow:0 8px 32px rgba(245,200,66,0.08);}
+@keyframes pop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card-top{padding:18px 18px 0;display:flex;align-items:flex-start;gap:12px;}
+.card-emoji{width:52px;height:52px;background:rgba(255,255,255,0.05);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.card-title-block{flex:1;}
+.card-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.25;margin-bottom:3px;}
+.card-loc{font-size:11px;color:var(--muted);}
+.cat-chip{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;font-weight:600;margin-top:5px;display:inline-block;}
+.chip-intl{background:rgba(74,144,226,0.15);color:#7EB3F0;}
+.chip-india{background:rgba(62,207,142,0.15);color:#5DD4A0;}
+.chip-adventure{background:rgba(255,140,66,0.15);color:#FFB07C;}
+.chip-experience{background:rgba(155,109,255,0.15);color:#BE9FFF;}
+.chip-festival{background:rgba(245,200,66,0.15);color:#F5C842;}
+.breakdown{margin:14px 18px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.bd-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.bd-row:last-child{border-bottom:none}
+.bd-cell{padding:9px 10px;border-right:1px solid var(--border);text-align:center;}
+.bd-cell:last-child{border-right:none}
+.bd-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.bd-val{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;}
+.nights-val{color:var(--blue)}.flight-val{color:var(--purple)}.hotel-val{color:var(--green)}.activity-val{color:var(--orange)}.per1-val{color:var(--gold)}.total3-val{color:#FF6B6B;font-size:15px;}
+.total-row{background:rgba(245,200,66,0.05);border-top:1px solid rgba(245,200,66,0.2);display:grid;grid-template-columns:1fr 1fr;margin:0 18px;}
+.total-cell{padding:11px 12px;text-align:center;border-right:1px solid var(--border);}
+.total-cell:last-child{border-right:none}
+.total-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.total-val{font-family:'Syne',sans-serif;font-weight:800;}
+.tv-per{font-size:14px;color:var(--gold)}.tv-all{font-size:16px;color:#FF6B6B;}
+.card-note{margin:10px 18px 16px;font-size:11px;color:var(--muted);line-height:1.5;padding:8px 10px;background:rgba(255,255,255,0.02);border-radius:7px;border-left:2px solid var(--border);}
+.grand-section{max-width:800px;margin:40px auto 0;background:linear-gradient(135deg,#0A0E1F 0%,#131728 100%);border:1px solid rgba(245,200,66,0.25);border-radius:20px;padding:36px;text-align:center;}
+.grand-section h2{font-family:'Syne',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.grand-num{font-family:'Syne',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;line-height:1;color:var(--text);margin-bottom:6px;}
+.grand-num span{color:var(--gold);}
+.grand-sub{color:var(--muted);font-size:12px;margin-bottom:24px;}
+.grand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:500px;margin:0 auto 24px;}
+.gg-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.gg-l{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.gg-v{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--gold);}
+.disc{max-width:800px;margin:16px auto 0;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);border-radius:10px;padding:16px 20px;font-size:11px;color:var(--muted);line-height:1.6;text-align:center;}
+.fab{position:fixed;bottom:24px;right:24px;background:var(--gold);color:#000;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;box-shadow:0 4px 20px rgba(245,200,66,0.35);border:none;font-weight:700;transition:transform 0.2s;}
+.fab:hover{transform:scale(1.1);}
+.fab-add{position:fixed;bottom:76px;right:24px;background:#3ECF8E;color:#000;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(62,207,142,0.4);border:none;font-weight:700;transition:transform 0.2s;z-index:200;}
+.fab-add:hover{transform:scale(1.1);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#0E1120;border:1px solid rgba(62,207,142,0.4);border-radius:20px;padding:32px;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-box h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--green);margin-bottom:6px;}
+.modal-sub{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.modal-field{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.modal-field label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.modal-field input,.modal-field select,.modal-field textarea{width:100%;background:transparent;border:none;outline:none;font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:var(--text);}
+.modal-field textarea{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;resize:none;height:52px;}
+.modal-field select option{background:#0E1120;}
+.modal-preview{background:rgba(62,207,142,0.05);border:1px solid rgba(62,207,142,0.2);border-radius:12px;padding:16px;margin-bottom:16px;display:none;}
+.modal-preview.show{display:block;}
+.modal-preview-title{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.modal-preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.mpg-item .mpg-l{font-size:9px;color:var(--muted);margin-bottom:3px;letter-spacing:1px;text-transform:uppercase;}
+.mpg-item .mpg-v{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gold);}
+.modal-btn-row{display:flex;gap:10px;justify-content:flex-end;}
+.modal-btn{padding:10px 24px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform 0.15s;}
+.modal-btn:hover{transform:scale(1.03);}
+.btn-cancel{background:rgba(255,255,255,0.07);color:var(--muted);}
+.btn-add{background:var(--green);color:#000;}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;}
+.custom-badge{display:inline-block;font-size:9px;background:rgba(62,207,142,0.15);border:1px solid rgba(62,207,142,0.3);color:#5DD4A0;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;vertical-align:middle;}
+/* SIP Calculator */
+.sip-section{max-width:900px;margin:32px auto 0;background:linear-gradient(135deg,#0A0E1F 0%,#110A1F 100%);border:1px solid rgba(155,109,255,0.3);border-radius:20px;padding:36px;text-align:center;}
+.sip-section h2{font-family:'Syne',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:6px;}
+.sip-sub{color:var(--muted);font-size:12px;margin-bottom:28px;}
+.sip-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px;text-align:left;}
+.sip-field{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+.sip-field label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
+.sip-field input{width:100%;background:transparent;border:none;outline:none;font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--text);}
+.sip-field input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.sip-field .sip-hint{font-size:10px;color:var(--muted);margin-top:4px;}
+.sip-result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
+.sr-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:16px;}
+.sr-l{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.sr-v{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;}
+.sr-v.purple{color:var(--purple)}.sr-v.gold{color:var(--gold)}.sr-v.green{color:var(--green)}.sr-v.sred{color:#FF6B6B;}.sr-v.blue{color:var(--blue)}
+.sip-goal-bar{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;text-align:left;}
+.gb-title{font-size:11px;color:var(--sub);margin-bottom:10px;}
+.progress-wrap{background:rgba(255,255,255,0.06);border-radius:6px;height:8px;overflow:hidden;margin-bottom:6px;}
+.progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--purple),var(--gold));transition:width 0.6s ease;}
+.gb-meta{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);}
+.sip-timeline{background:rgba(255,255,255,0.02);border:1px dashed rgba(155,109,255,0.2);border-radius:10px;padding:14px 18px;font-size:11.5px;color:var(--sub);line-height:1.8;text-align:left;}
+.sip-timeline strong{color:var(--purple);}
+.ms{display:inline-block;background:rgba(155,109,255,0.12);border:1px solid rgba(155,109,255,0.3);color:#BE9FFF;padding:2px 9px;border-radius:4px;font-size:10px;margin:1px 2px;}
+@media(max-width:480px){.strip{flex-direction:column;}.strip-item{border-right:none;border-bottom:1px solid var(--border);}.grand-grid{grid-template-columns:1fr 1fr;}.cards{grid-template-columns:1fr;}.sip-inputs{grid-template-columns:1fr 1fr;}.sip-result-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="pill">✈ Bucket List 2050 Planner</div>
+  <h1>Your <em>Dream Trips</em><br>Full Cost Breakdown</h1>
+  <p>Delhi (DEL) → World · 1 Person · 2050 Projected Prices · With Nights Breakdown</p>
+  <div class="info-box">
+    <div class="ib"><div class="ib-l">Travellers</div><div class="ib-v">1 Person</div></div>
+    <div class="ib"><div class="ib-l">Base Year</div><div class="ib-v">2025 → 2050</div></div>
+    <div class="ib"><div class="ib-l">Inflation Rate</div><div class="ib-v" id="hero-inf">~3.5%/yr</div></div>
+    <div class="ib"><div class="ib-l">Price Multiplier</div><div class="ib-v" id="hero-mult">~4×</div></div>
+    <div class="ib"><div class="ib-l">Departure</div><div class="ib-v">Delhi DEL</div></div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item"><div class="sl">Destinations</div><div class="sv gold" id="s-count">—</div></div>
+  <div class="strip-item"><div class="sl">Total Nights</div><div class="sv blue" id="s-nights">—</div></div>
+  <div class="strip-item"><div class="sl">Per Person (All)</div><div class="sv green" id="s-pp">—</div></div>
+  <div class="strip-item"><div class="sl">1 Person Grand Total</div><div class="sv gold" id="s-total">—</div></div>
+</div>
+
+<div class="controls">
+  <button class="filter-btn active" onclick="doFilter('all',this)">🌍 All</button>
+  <button class="filter-btn" onclick="doFilter('international',this)">✈️ International</button>
+  <button class="filter-btn" onclick="doFilter('india',this)">🇮🇳 India</button>
+  <button class="filter-btn" onclick="doFilter('adventure',this)">🏔️ Adventure</button>
+  <button class="filter-btn" onclick="doFilter('experience',this)">🎡 Experience</button>
+  <button class="filter-btn" onclick="doFilter('festival',this)">🎉 Festival</button>
+  <input class="search-inp" id="sbox" placeholder="🔍 Search destination..." oninput="doSearch(this.value)">
+  <select class="sort-sel" onchange="doSort(this.value)">
+    <option value="default">Sort: Default</option>
+    <option value="cheap">Cheapest First</option>
+    <option value="expensive">Most Expensive First</option>
+    <option value="nights_desc">Most Nights First</option>
+    <option value="az">A–Z</option>
+  </select>
+</div>
+
+<div class="grid-wrap">
+  <div class="results-info" id="res-info"></div>
+  <div class="cards" id="cards"></div>
+
+  <div class="grand-section">
+    <h2>🌏 Grand Total · All Destinations · 2050</h2>
+    <div class="grand-num">₹<span id="gt-num">—</span></div>
+    <div class="grand-sub">1 person · All destinations combined · From Delhi</div>
+    <div class="grand-grid">
+      <div class="gg-item"><div class="gg-l">Destinations</div><div class="gg-v" id="gt-d">—</div></div>
+      <div class="gg-item"><div class="gg-l">Total Nights</div><div class="gg-v" id="gt-n">—</div></div>
+      <div class="gg-item"><div class="gg-l">Per Person</div><div class="gg-v" id="gt-pp">—</div></div>
+    </div>
+  </div>
+
+  <div class="disc" id="main-disc">
+    📌 <strong>Note:</strong> 2050 projected prices = 2025 base × <span id="disc-mult">4.0</span> (<span id="disc-inf">3.5</span>% annual compound inflation over 25 years). Each card shows: ✈️ Round-trip flight from Delhi · 🌙 Nights stay · 🏨 Hotel per night + total · 🎒 Activities · 👤 Per person total. Prices are indicative estimates — verify on actual booking platforms.
+  </div>
+
+  <!-- INFLATION CONTROL PANEL -->
+  <div class="sip-section" style="margin-top:32px;border-color:rgba(245,200,66,0.3);background:linear-gradient(135deg,#0E0A00 0%,#1A1200 100%);">
+    <h2 style="color:var(--gold);">🌡️ Inflation Rate Control · Adjust 2050 Prices</h2>
+    <div class="sip-sub">Kitna inflation assume karna hai? Slider adjust karo — saare card prices live update ho jayenge.</div>
+
+    <div style="max-width:600px;margin:0 auto 20px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;">
+        <span style="font-size:11px;color:var(--muted);min-width:80px;text-align:right;">Optimistic<br><span style="color:var(--green);font-family:'Syne',sans-serif;font-size:13px;">2%</span></span>
+        <input type="range" id="inf-slider" min="2" max="10" step="0.5" value="3.5"
+          style="flex:1;accent-color:var(--gold);height:6px;cursor:pointer;"
+          oninput="updateInflation(this.value)">
+        <span style="font-size:11px;color:var(--muted);min-width:80px;">Pessimistic<br><span style="color:var(--red);font-family:'Syne',sans-serif;font-size:13px;">10%</span></span>
+      </div>
+      <div style="text-align:center;margin-bottom:8px;">
+        <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--gold);" id="inf-display">3.5%</span>
+        <span style="color:var(--muted);font-size:12px;"> annual inflation · Multiplier: </span>
+        <span style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--orange);" id="mult-display">×4.0</span>
+        <span style="color:var(--muted);font-size:11px;"> (over 25 yrs)</span>
+      </div>
+    </div>
+
+    <!-- Inflation scenario pills -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">
+      <button onclick="setInf(2)" style="background:rgba(62,207,142,0.12);border:1px solid rgba(62,207,142,0.3);color:#5DD4A0;padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟢 2% — Best case (Stable world)</button>
+      <button onclick="setInf(3.5)" style="background:rgba(245,200,66,0.12);border:1px solid rgba(245,200,66,0.3);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟡 3.5% — Realistic (India travel avg)</button>
+      <button onclick="setInf(6)" style="background:rgba(255,140,66,0.12);border:1px solid rgba(255,140,66,0.3);color:var(--orange);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟠 6% — High (USD/EUR pressure)</button>
+      <button onclick="setInf(8)" style="background:rgba(224,82,82,0.12);border:1px solid rgba(224,82,82,0.3);color:var(--red);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🔴 8% — Worst case (Rupee falls)</button>
+    </div>
+
+    <!-- Inflation explainer -->
+    <div style="background:rgba(255,255,255,0.02);border:1px dashed rgba(245,200,66,0.15);border-radius:10px;padding:14px 18px;font-size:11px;color:var(--sub);line-height:1.8;text-align:left;max-width:700px;margin:0 auto;">
+      <strong style="color:var(--gold);">📖 Inflation kya hota hai isme?</strong><br>
+      Agar aaj Bali jaane ka total ₹1L hai, toh 25 saal baad wahi trip <em>inflation ke saath</em> kitne ki padegi?<br>
+      Formula: <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;color:#BE9FFF;">Future Price = Today's Price × (1 + inflation%)²⁵</code><br>
+      <span style="color:var(--green);">3.5%</span> pe → ×4.0 multiplier | <span style="color:var(--orange);">6%</span> pe → ×4.3 multiplier | <span style="color:var(--red);">8%</span> pe → ×6.8 multiplier<br>
+      <span style="color:var(--muted);">International trips pe dollar/euro inflation bhi lagti hai — isliye higher rate zyada realistic hai for foreign trips.</span>
+    </div>
+  </div>
+
+  <!-- SIP CALCULATOR UPGRADED -->
+  <div class="sip-section">
+    <h2>💰 SIP Goal Calculator · Your Dream Fund</h2>
+    <div class="sip-sub">Tu abhi 19 ka hai · Job 25 pe lagegi · Tab SIP shuru · Kitne saal lagenge poora bucket list fund karne mein?</div>
+    <div class="sip-inputs">
+      <div class="sip-field">
+        <label>📅 Current Age</label>
+        <input type="number" id="sip-age" value="19" min="10" max="40" oninput="calcSIP()">
+        <div class="sip-hint">years old (2026)</div>
+      </div>
+      <div class="sip-field">
+        <label>💼 Job Start Age</label>
+        <input type="number" id="sip-jobage" value="25" min="18" max="40" oninput="calcSIP()">
+        <div class="sip-hint">SIP starts from this age</div>
+      </div>
+      <div class="sip-field">
+        <label>💸 Monthly SIP (₹)</label>
+        <input type="number" id="sip-amount" value="15000" min="500" oninput="calcSIP()">
+        <div class="sip-hint">invested every month</div>
+      </div>
+      <div class="sip-field">
+        <label>📈 Expected Return %</label>
+        <input type="number" id="sip-return" value="12" min="1" max="30" step="0.5" oninput="calcSIP()">
+        <div class="sip-hint">12% = Nifty50 avg (realistic)</div>
+      </div>
+    </div>
+
+    <!-- Min/Max scenario buttons -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">
+      <span style="font-size:11px;color:var(--muted);align-self:center;margin-right:4px;">Return scenario:</span>
+      <button onclick="setReturn(8)" style="background:rgba(224,82,82,0.1);border:1px solid rgba(224,82,82,0.3);color:var(--red);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🔴 8% — Conservative (FD/Debt)</button>
+      <button onclick="setReturn(10)" style="background:rgba(255,140,66,0.1);border:1px solid rgba(255,140,66,0.3);color:var(--orange);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟠 10% — Moderate</button>
+      <button onclick="setReturn(12)" style="background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟡 12% — Realistic (Nifty50)</button>
+      <button onclick="setReturn(14)" style="background:rgba(62,207,142,0.1);border:1px solid rgba(62,207,142,0.3);color:var(--green);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟢 14% — Optimistic (Mid/Small cap)</button>
+    </div>
+
+    <div class="sip-result-grid" id="sip-results"></div>
+
+    <!-- Min/Max Years Summary Box -->
+    <div id="minmax-box" style="background:rgba(255,255,255,0.02);border:1px solid rgba(155,109,255,0.2);border-radius:14px;padding:20px;margin-bottom:16px;text-align:left;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:14px;">⚡ Min · Expected · Max Years to Goal</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" id="minmax-grid"></div>
+      <div style="margin-top:12px;font-size:10px;color:var(--muted);line-height:1.6;" id="minmax-note"></div>
+    </div>
+
+    <div id="sip-goals-wrap"></div>
+
+    <!-- 10yr / 20yr Explained Section -->
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(74,144,226,0.2);border-radius:14px;padding:20px;margin-bottom:16px;text-align:left;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">📊 10 Year & 20 Year Corpus — Kya Matlab Hai?</div>
+      <div id="yr-explain" style="font-size:11.5px;color:var(--sub);line-height:1.9;"></div>
+    </div>
+
+    <div class="sip-timeline" id="sip-timeline"></div>
+
+    <!-- Risk disclaimer -->
+    <div style="margin-top:14px;background:rgba(224,82,82,0.04);border:1px dashed rgba(224,82,82,0.2);border-radius:10px;padding:12px 16px;font-size:10.5px;color:var(--muted);line-height:1.7;text-align:left;">
+      ⚠️ <strong style="color:var(--red);">Risk Disclaimer:</strong> Yeh sab <em>projections</em> hain — guarantee nahi. Market upar-neeche jaata hai.<br>
+      • <strong>8% return</strong> — agar market slow raha / recession aaya → time badh sakta hai<br>
+      • <strong>12% return</strong> — Nifty50 ka 20yr historical avg, future mein same nahi hoga necessarily<br>
+      • <strong>14% return</strong> — mid/small cap funds mein possible, but <em>high volatility</em> — value 50% neeche bhi ja sakti hai temporarily<br>
+      • Rupee depreciation international trips mahengi kar sakti hai even if corpus achieve ho gaya<br>
+      <span style="color:rgba(255,255,255,0.3);">Mutual fund investments are subject to market risk. Ye calculator financial advice nahi hai — ek certified advisor se consult karo before major decisions.</span>
+    </div>
+  </div>
+
+</div>
+
+<button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="fab-add" onclick="openModal()" title="Add new destination">+</button>
+
+<!-- ADD LOCATION MODAL -->
+<div class="modal-overlay" id="add-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>➕ Add New Destination</h3>
+    <p class="modal-sub">Sirf destination naam daalo — <strong style="color:#A78BFA;">Gemini AI</strong> travel data research karke fill kar dega! 🤖✨</p>
+
+    <!-- STEP 1: Name + AI button -->
+    <div class="modal-field" style="margin-bottom:12px;">
+      <label>🌍 Destination Name</label>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input type="text" id="m-name" placeholder="e.g. Santorini, Greece" oninput="previewCalc()" style="flex:1;">
+        <button onclick="aiFill()" id="ai-btn" style="background:linear-gradient(135deg,#1A73E8,#7C3AED);color:#fff;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;transition:opacity .2s;">🔍 Gemini Fill</button>
+      </div>
+    </div>
+
+    <!-- AI Status bar -->
+    <div id="ai-status" style="display:none;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#A78BFA;"></div>
+
+    <!-- FORM FIELDS -->
+    <div class="modal-grid">
+      <div class="modal-field">
+        <label>📍 Location / Region</label>
+        <input type="text" id="m-loc" placeholder="e.g. Greece, Europe" oninput="previewCalc()">
+      </div>
+      <div class="modal-field">
+        <label>🏷️ Category</label>
+        <select id="m-cat" onchange="previewCalc()">
+          <option value="international">🌍 International</option>
+          <option value="india">🇮🇳 India</option>
+          <option value="adventure">🏔️ Adventure</option>
+          <option value="experience">🎡 Experience</option>
+          <option value="festival">🎉 Festival</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label>😀 Emoji</label>
+        <input type="text" id="m-emoji" placeholder="🏖️" maxlength="4" oninput="previewCalc()">
+      </div>
+      <div class="modal-field">
+        <label>✈️ Flight Round-Trip 2025 (₹)</label>
+        <input type="number" id="m-flight" placeholder="80000" oninput="previewCalc()">
+      </div>
+      <div class="modal-field">
+        <label>🏨 Hotel Per Night 2025 (₹)</label>
+        <input type="number" id="m-hotel" placeholder="6000" oninput="previewCalc()">
+      </div>
+      <div class="modal-field">
+        <label>🌙 Number of Nights</label>
+        <input type="number" id="m-nights" placeholder="7" min="1" max="90" oninput="previewCalc()">
+      </div>
+      <div class="modal-field">
+        <label>🎒 Activities Total 2025 (₹)</label>
+        <input type="number" id="m-activity" placeholder="15000" oninput="previewCalc()">
+      </div>
+      <div class="modal-field" style="grid-column:1/-1;">
+        <label>💡 Short Note / Why Visit?</label>
+        <textarea id="m-note" placeholder="What makes this place special..."></textarea>
+      </div>
+    </div>
+
+    <!-- Live Price Preview -->
+    <div class="modal-preview" id="m-preview">
+      <div class="modal-preview-title">📊 Live 2050 Price Preview (at current inflation rate)</div>
+      <div class="modal-preview-grid">
+        <div class="mpg-item"><div class="mpg-l">✈️ Flight 2050</div><div class="mpg-v" id="mp-flight">—</div></div>
+        <div class="mpg-item"><div class="mpg-l">🏨 Hotel Total 2050</div><div class="mpg-v" id="mp-hotel">—</div></div>
+        <div class="mpg-item"><div class="mpg-l">🎒 Activities 2050</div><div class="mpg-v" id="mp-act">—</div></div>
+        <div class="mpg-item"><div class="mpg-l">👤 Per Person 2050</div><div class="mpg-v" id="mp-per" style="color:#FF6B6B;">—</div></div>
+        <div class="mpg-item"><div class="mpg-l">🌙 Nights</div><div class="mpg-v" id="mp-nights" style="color:var(--blue);">—</div></div>
+        <div class="mpg-item"><div class="mpg-l">🔢 Multiplier Used</div><div class="mpg-v" id="mp-mult" style="color:var(--orange);">—</div></div>
+      </div>
+    </div>
+
+    <div class="modal-btn-row">
+      <button class="modal-btn btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-btn btn-add" onclick="addLocation()">✓ Add to Bucket List</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let INF=Math.pow(1.035,25), PPL=1;
+let currentInflationRate = 3.5;
+
+function updateInflation(val) {
+  currentInflationRate = parseFloat(val);
+  INF = Math.pow(1 + currentInflationRate/100, 25);
+  document.getElementById('inf-display').textContent = val + '%';
+  document.getElementById('mult-display').textContent = '×' + INF.toFixed(1);
+  document.getElementById('hero-inf').textContent = '~' + val + '%/yr';
+  document.getElementById('hero-mult').textContent = '~' + INF.toFixed(1) + '×';
+  document.getElementById('inf-slider').value = val;
+  document.getElementById('disc-inf').textContent = val;
+  document.getElementById('disc-mult').textContent = INF.toFixed(1);
+  renderAll();
+  calcSIP();
+}
+
+// ── ADD LOCATION SYSTEM ──
+function openModal(){document.getElementById('add-modal').classList.add('open');}
+function closeModal(){document.getElementById('add-modal').classList.remove('open');}
+
+const GEMINI_API_KEY = 'AIzaSyBsN09gFrcguDTlslrCzVVS_4s-rdLEfU0';
+
+async function aiFill(){
+  const name = document.getElementById('m-name').value.trim();
+  if(!name){ alert('Pehle destination naam daalo!'); return; }
+
+  const btn = document.getElementById('ai-btn');
+  const status = document.getElementById('ai-status');
+  btn.disabled = true;
+  btn.textContent = '⏳ Searching Web...';
+  btn.style.opacity = '0.6';
+  status.style.display = 'block';
+  status.innerHTML = '🤖 Gemini AI research kar raha hai <strong>' + name + '</strong> ke liye — flight prices, hotels, activities...';
+
+  const prompt = `You are a travel cost researcher with access to Google Search. Search the web and find current 2025 travel costs for "${name}" for an Indian tourist traveling from New Delhi, India.
+
+Search for: "${name} flight price from Delhi 2025", "${name} hotel price per night 2025", "${name} travel cost India tourist", "${name} things to do budget"
+
+Based on your search results, return ONLY a valid JSON object. No explanation, no markdown, no backticks. Just raw JSON:
+{
+  "location": "Country or State, Region",
+  "category": "international",
+  "emoji": "🏖️",
+  "flight_inr": 85000,
+  "hotel_per_night_inr": 7000,
+  "nights": 7,
+  "activities_inr": 18000,
+  "note": "2 exciting sentences about why this place is amazing and top things to do there."
+}
+
+Rules:
+- category must be exactly one of: international, india, adventure, experience, festival
+- flight_inr = round-trip economy from New Delhi DEL airport in Indian Rupees (realistic 2025 market price based on search)
+- hotel_per_night_inr = mid-range hotel per night in INR (search actual hotel prices)
+- nights = recommended ideal stay duration based on distance and attractions
+- activities_inr = total activities/experiences budget for the whole trip in INR
+- emoji = single most fitting emoji for this destination
+- note = vivid, exciting 2-sentence travel description mentioning specific highlights
+
+Return ONLY the JSON. Nothing else.`;
+
+  try {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.2,
+            maxOutputTokens: 1024
+          }
+        })
+      }
+    );
+
+    const data = await res.json();
+
+    // Check for API errors
+    if(data.error) throw new Error(data.error.message || 'Gemini API error');
+
+    // Extract text from Gemini response
+    let rawText = '';
+    const candidates = data.candidates || [];
+    if(candidates.length > 0){
+      const parts = candidates[0].content?.parts || [];
+      for(const part of parts){
+        if(part.text) rawText += part.text;
+      }
+    }
+
+    if(!rawText) throw new Error('Gemini ne koi response nahi diya');
+
+    // Parse JSON — strip any markdown fences
+    const clean = rawText.replace(/```json|```/gi, '').trim();
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
+    if(!jsonMatch) throw new Error('JSON parse nahi hua — try again');
+    const info = JSON.parse(jsonMatch[0]);
+
+    // Fill form fields
+    document.getElementById('m-loc').value      = info.location || '';
+    document.getElementById('m-emoji').value    = info.emoji || '📍';
+    document.getElementById('m-flight').value   = info.flight_inr || '';
+    document.getElementById('m-hotel').value    = info.hotel_per_night_inr || '';
+    document.getElementById('m-nights').value   = info.nights || 7;
+    document.getElementById('m-activity').value = info.activities_inr || '';
+    document.getElementById('m-note').value     = info.note || '';
+
+    // Set category dropdown
+    const catEl = document.getElementById('m-cat');
+    const cat = (info.category || 'international').toLowerCase().trim();
+    for(let i=0;i<catEl.options.length;i++){
+      if(catEl.options[i].value === cat){ catEl.selectedIndex = i; break; }
+    }
+
+    previewCalc();
+    status.style.background = 'rgba(62,207,142,0.08)';
+    status.style.borderColor = 'rgba(62,207,142,0.3)';
+    status.style.color = '#5DD4A0';
+    status.innerHTML = '✅ <strong>Gemini AI</strong> ne sab fill kar diya! Check karo aur "Add to Bucket List" dabao.';
+
+  } catch(err) {
+    status.style.background = 'rgba(239,68,68,0.08)';
+    status.style.borderColor = 'rgba(239,68,68,0.3)';
+    status.style.color = '#F87171';
+    status.textContent = '❌ Error: ' + (err.message || 'Try again') + ' — Manual fill kar lo ya dobara try karo.';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '✦ AI Fill';
+  btn.style.opacity = '1';
+}
+
+function previewCalc(){
+  const f=parseFloat(document.getElementById('m-flight').value)||0;
+  const h=parseFloat(document.getElementById('m-hotel').value)||0;
+  const n=parseInt(document.getElementById('m-nights').value)||0;
+  const a=parseFloat(document.getElementById('m-activity').value)||0;
+  if(!f&&!h&&!n&&!a){document.getElementById('m-preview').classList.remove('show');return;}
+  const f50=Math.round(f*INF);
+  const h50=Math.round(h*INF);
+  const hTot=h50*n;
+  const a50=Math.round(a*INF);
+  const per1=f50+hTot+a50;
+  document.getElementById('mp-flight').textContent=fmtINR(f50);
+  document.getElementById('mp-hotel').textContent=fmtINR(hTot);
+  document.getElementById('mp-act').textContent=fmtINR(a50);
+  document.getElementById('mp-per').textContent=fmtINR(per1);
+  document.getElementById('mp-nights').textContent=n+' nights';
+  document.getElementById('mp-mult').textContent='×'+INF.toFixed(2)+' ('+currentInflationRate+'%)';
+  document.getElementById('m-preview').classList.add('show');
+}
+
+function addLocation(){
+  const name=document.getElementById('m-name').value.trim();
+  const loc=document.getElementById('m-loc').value.trim();
+  const cat=document.getElementById('m-cat').value;
+  const emoji=document.getElementById('m-emoji').value.trim()||'📍';
+  const flight=parseFloat(document.getElementById('m-flight').value)||0;
+  const hotel=parseFloat(document.getElementById('m-hotel').value)||0;
+  const nights=parseInt(document.getElementById('m-nights').value)||7;
+  const activity=parseFloat(document.getElementById('m-activity').value)||0;
+  const note=document.getElementById('m-note').value.trim()||'Custom destination added by you.';
+  if(!name){alert('Destination naam daalo!');return;}
+  if(!flight&&!hotel){alert('Kuch toh price daalo!');return;}
+  DATA.push([name+' ✦',loc,cat,emoji,flight,hotel,nights,activity,note+' · [Custom Entry]']);
+  closeModal();
+  ['m-name','m-loc','m-emoji','m-flight','m-hotel','m-nights','m-activity','m-note'].forEach(id=>{document.getElementById(id).value='';});
+  document.getElementById('m-cat').value='international';
+  document.getElementById('m-preview').classList.remove('show');
+  renderAll();
+  calcSIP();
+  setTimeout(()=>document.getElementById('cards').scrollIntoView({behavior:'smooth',block:'start'}),200);
+}
+
+function setInf(val) { updateInflation(val); }
+function setReturn(val) { document.getElementById('sip-return').value = val; calcSIP(); }
+
+// [name, location, category, emoji, flight2025, hotelPerNight2025, nights, activityPerPerson2025, note]
+const DATA=[
+  ["Faroe Islands","Denmark","international","🏔️",85000,8000,6,15000,"Scenic volcanic islands — puffins, waterfalls, Múlafossur cliff"],
+  ["New Zealand","Oceania","international","🌿",90000,7000,10,24000,"Fjords, bungee jumping, hobbit villages & glacier hikes"],
+  ["Hilton Barbados","Caribbean","international","🏖️",120000,18000,7,18000,"Luxury beach resort — coral reef snorkelling & rum trails"],
+  ["Harry Potter World, Orlando","Florida USA","international","⚡",130000,9000,7,36000,"Universal Studios — Diagon Alley, Hogsmeade, rides & butterbeer"],
+  ["Easter Island","Chile","international","🗿",150000,7000,5,15000,"Mysterious Moai statues, Rapa Nui culture & world-class stargazing"],
+  ["Blue Point Beach","Bali, Indonesia","international","🌊",40000,4000,7,9000,"Clifftop beach, Uluwatu temple views & world-class surf breaks"],
+  ["Kauai","Hawaii USA","international","🌺",130000,10000,8,21000,"Na Pali Coast helicopter, Waimea Canyon & lush rainforest treks"],
+  ["Virgin Islands","Caribbean","international","⛵",130000,8000,7,18000,"White sand beaches, snorkelling, sailing & rum distillery tours"],
+  ["Ireland","Europe","international","🍀",75000,7000,8,12000,"Cliffs of Moher, ancient castles, Ring of Kerry & Irish pubs"],
+  ["Yuvarlakçay River, Muğla","Turkey","international","💧",45000,4000,5,6000,"Crystal-clear turquoise spring river — canoe safari & nature walks"],
+  ["Honolulu","Hawaii USA","international","🌸",130000,9000,7,18000,"Waikiki Beach, Diamond Head sunrise hike & Pearl Harbor memorial"],
+  ["World Cruise","Various Oceans","international","🚢",120000,6000,14,9000,"Mediterranean or Caribbean cruise — multiple ports, all inclusive"],
+  ["Palm Springs","California USA","international","🌴",125000,8000,6,15000,"Desert resort, Joshua Tree NP, mid-century architecture & spas"],
+  ["Zermatt","Switzerland","international","🏔️",95000,12000,7,24000,"Matterhorn views, skiing, Gornergrat railway & Swiss fondue"],
+  ["Alcatraz Island","San Francisco USA","international","🔒",130000,9000,5,9000,"Historic prison island + Golden Gate Bridge & Fisherman's Wharf"],
+  ["Arizona","USA","international","🏜️",125000,6000,7,18000,"Grand Canyon, Antelope Canyon, Monument Valley & Route 66"],
+  ["Tasman Peninsula, Eagle Hawk Neck","Tasmania, Australia","international","🦅",105000,6000,7,15000,"Dramatic sea arches, blowholes, Tessellated Pavement & wildlife"],
+  ["Munich's Frauenkirche","Germany","international","⛪",80000,6000,5,9000,"Gothic twin-tower cathedral + Oktoberfest, Marienplatz & beer halls"],
+  ["Cannes","France","international","🎬",95000,10000,6,18000,"Film festival glamour, Croisette beach & French Riviera yachts"],
+  ["Sweden","Scandinavia","international","🇸🇪",85000,8000,8,12000,"Stockholm archipelago, ABBA Museum, Vasa Ship & aurora chasing"],
+  ["Oman","Middle East","international","🏜️",30000,5000,7,12000,"Wahiba Sands, Musandam fjords, Nizwa Fort & traditional souqs"],
+  ["Svalbard, Norway","Arctic Circle","international","🐻‍❄️",120000,9000,7,21000,"Polar bears, midnight sun, snowmobile glacier & dog sled tours"],
+  ["Suriname","South America","international","🌴",130000,4000,7,12000,"Amazon rainforest, Paramaribo colonial city & river tribe visits"],
+  ["Maho Beach Airport, Sint Maarten","Caribbean","international","✈️",130000,7000,6,12000,"World-famous: jumbo jets land 10m above your head on the beach!"],
+  ["Dominican Republic","Caribbean","international","🌺",120000,6000,7,15000,"Punta Cana white beaches, Samaná Bay & humpback whale watching"],
+  ["Gerringong Beach","NSW, Australia","international","🌊",100000,5500,6,9000,"Stunning sea cliffs, surf, Seven Mile Beach & coastal walks"],
+  ["Nusa Penida","Bali, Indonesia","international","🦅",38000,3500,6,12000,"Kelingking Beach cliff, Angel's Billabong & manta ray snorkelling"],
+  ["Aurora Village, Ivalo","Finland","international","🌌",95000,10000,6,18000,"Glass igloo under Northern Lights + reindeer sleigh ride & sauna"],
+  ["Mt. Bromo","Java, Indonesia","international","🌋",38000,3000,5,10500,"Active volcano sunrise — jeep ride across sea of sand & crater hike"],
+  ["Sailing in Greece","Mediterranean","international","⛵",110000,8000,10,21000,"Santorini, Mykonos, Crete — Aegean island hopping & sunsets"],
+  ["Amalfi Coast","Italy","international","🍋",95000,9000,8,18000,"Positano cliffs, limoncello, Ravello gardens & pasta by the sea"],
+  ["Milford Sound & Doubtful Sound","New Zealand","international","🏔️",90000,7000,8,21000,"UNESCO fiords — cruises, kayaking, waterfalls, dolphins & penguins"],
+  ["Great Barrier Reef Diving","Australia","international","🐠",100000,6000,7,30000,"World's largest coral reef — SCUBA cert & liveaboard diving"],
+  ["Pyramids of Egypt","Egypt","international","🐪",55000,5000,7,15000,"Giza pyramids, Great Sphinx, Valley of Kings & Nile felucca"],
+  ["Lofoten Road Trip","Norway","international","🚗",100000,7000,10,15000,"Arctic fjords, rorbu cabins, midnight sun, cod fishing & kayaking"],
+  ["Dubrovnik Sunsets","Croatia","international","🌅",80000,7000,7,12000,"Old Town walls, Game of Thrones filming locations & Adriatic sea"],
+  ["Cherry Blossom Japan","Japan","international","🌸",80000,8000,8,18000,"Sakura season in Tokyo, Kyoto & Nara — hanami picnics & temples"],
+  ["Summer in Ibiza","Spain","international","🎶",90000,8000,7,24000,"World-famous beach clubs, Café del Mar sunsets & Es Vedrà"],
+  ["Swimming with Wild Dolphins, NZ","New Zealand","international","🐬",90000,7000,7,24000,"Wild dolphin encounter at Kaikoura or Bay of Islands"],
+  ["Tomorrowland Music Festival","Belgium","international","🎪",85000,7000,5,45000,"World's biggest EDM festival — Dreamville glamping & main stage"],
+  ["Skydiving Swiss Alps","Switzerland","international","🪂",95000,8000,5,60000,"Tandem skydive over Matterhorn — Interlaken or Lauterbrunnen drop zone"],
+  ["Liechtenstein","Europe","international","🏰",85000,6000,4,9000,"Tiny principality — Vaduz Castle, Rhine Valley wine & Alpine hikes"],
+  ["Underwater Waterfall, Mauritius","Indian Ocean","international","🌊",55000,8000,7,15000,"Optical illusion 'underwater waterfall' near Le Morne beach"],
+  ["Learn Kung Fu in China","China","international","🥋",65000,3500,21,6000,"Shaolin Temple or Wudang Mountains — immersive martial arts training"],
+  ["Christmas in New York","USA","international","🎄",130000,12000,7,24000,"Rockefeller tree, Times Square NYE, Macy's parade & snowfall"],
+  ["Northern Lights Finland","Finland","international","🌌",95000,9000,6,15000,"Glass igloo stay + husky safari, reindeer & aurora photography"],
+  ["Tungnath Chandrashila","Uttarakhand","india","⛰️",7000,1500,4,3000,"Highest Shiva temple in world + 360° Himalayan sunrise from peak"],
+  ["Madmaheshwar","Uttarakhand","india","🏔️",7000,1200,5,2400,"Remote Shiva temple trek through alpine meadows & rhododendron forests"],
+  ["Binsar, Pauri Garhwal","Uttarakhand","india","🌲",7000,1500,4,1500,"Dense oak forests, Mahadev Mandir & stunning Himalayan panorama"],
+  ["Badhu ki Ladi","Himachal Pradesh","india","🌾",7000,1000,3,1500,"Hidden meadow & traditional Himachali village — off the beaten path"],
+  ["Amboli","Maharashtra","india","💧",4000,1500,3,2400,"Misty monsoon waterfalls & Western Ghats biodiversity hotspot"],
+  ["Harihar Fort","Maharashtra","india","🏯",3500,1200,2,1500,"Near-vertical rock-cut steps fort — one of India's most thrilling treks"],
+  ["Dud Sagar Waterfalls, Goa","Goa","india","🌊",5000,3500,4,6000,"Iconic 4-tier 'sea of milk' waterfall — seen in Bollywood films"],
+  ["Nagramadi Waterfalls","Karnataka","india","🌿",7000,2000,3,3000,"Hidden jungle waterfall cascade — off-beaten-path Karnataka"],
+  ["Rock Garden, Darjeeling","West Bengal","india","🍵",8000,2500,4,4500,"Toy train heritage ride, Kanchenjunga views & tea estate walks"],
+  ["Kalpeni, Lakshadweep","Lakshadweep","india","🏝️",18000,5000,5,9000,"Pristine coral island — lagoon kayaking, snorkelling & palm groves"],
+  ["Nau Chowki Pal","Rajasthan","india","🌅",6000,2000,3,3000,"Ancient ghats of Luni river & rural Rajasthan desert culture"],
+  ["Rajsamand Lake","Rajasthan","india","🏛️",5000,3000,3,4500,"17th century marble embankment — Nauchowki Pal carvings & sunsets"],
+  ["Winter in Spiti Valley","Himachal Pradesh","india","❄️",8000,2000,7,4500,"Frozen Spiti river, snow leopard tracking & ancient monasteries"],
+  ["Chandrashila Peak","Uttarakhand","india","🌙",7000,1500,4,3000,"360° Himalayan sunrise — Kedarnath, Badrinath & Chaukhamba views"],
+  ["Himalayan Trekking","Various, India","india","🥾",8000,2500,7,9000,"Kedarkantha, Hampta Pass, Roopkund or Sandakphu ridge trek"],
+  ["Dune Cross / Desert Safari","Rajasthan / Oman","adventure","🏜️",30000,4000,4,15000,"Dune bashing, sandboarding, camel ride & overnight desert camp"],
+  ["Skydiving","NZ / Dubai / Switzerland","adventure","🪂",80000,5000,3,54000,"Tandem skydive over mountains, desert or coastline — bucket list!"],
+  ["Bali Bungee Jump","Bali, Indonesia","adventure","🌿",38000,3500,5,18000,"AJ Hackett Bungee Bali — 45m plunge into jungle canopy"],
+  ["Bungee Jumping","Rishikesh / Queenstown","adventure","🤸",50000,4000,3,18000,"Highest commercial bungee in India or Queenstown, New Zealand"],
+  ["Snowboarding","Switzerland / Japan / India","adventure","🏂",90000,8000,7,24000,"Swiss Alps powder, Hokkaido Japan or Gulmarg back-country riding"],
+  ["Water Skiing / Wakeboarding","Various","adventure","🌊",30000,4000,4,9000,"Lakes & coastal water sports resorts — beginner to advanced"],
+  ["Jet Skiing","Goa / Maldives / Dubai","adventure","💨",25000,3500,3,6000,"Full-throttle jet ski across turquoise open water — pure adrenaline"],
+  ["Scuba Diving","Andaman / GBR / Red Sea","adventure","🤿",60000,5000,7,24000,"Open water SCUBA cert + world-class dive sites — wrecks & reefs"],
+  ["Escape Rooms (International)","Tokyo / Budapest / London","experience","🔑",5000,3000,2,6000,"World's most immersive escape rooms — horror, heist & mystery"],
+  ["Moberopeswing Giant Cliff Swing","Ecuador / Various","experience","🎢",50000,4000,3,15000,"World's scariest cliff swings over active volcanoes & canyons!"],
+  ["Sommerlicher Adrenalin — Bern","Switzerland 🇨🇭","adventure","🏔️",95000,11000,7,32000,"Bern summer adrenaline pack: paragliding over Alps, whitewater rafting on Aare, canyon swing at Grindelwald & Jungfraujoch summit. Bern Altstadt UNESCO old town + Bear Park. Best: June–Aug."],
+];
+
+function fmtINR(n){
+  if(n>=10000000)return '₹'+(n/10000000).toFixed(2)+'Cr';
+  if(n>=100000)return '₹'+(n/100000).toFixed(1)+'L';
+  if(n>=1000)return '₹'+(n/1000).toFixed(0)+'K';
+  return '₹'+n.toLocaleString('en-IN');
+}
+
+function calcRow(d){
+  const flight=d[4],hotel=d[5],nights=d[6],activity=d[7];
+  const f2050=Math.round(flight*INF);
+  const h2050=Math.round(hotel*INF);
+  const a2050=Math.round(activity*INF);
+  const hotelTotal=h2050*nights;
+  const per1=f2050+hotelTotal+a2050;
+  const total3=per1*PPL;
+  return{f2050,h2050,hotelTotal,a2050,nights,per1,total3};
+}
+
+let activeFilter='all', activeSearch='', activeSortMode='default';
+
+function getFiltered(){
+  let list=DATA;
+  if(activeFilter!=='all')list=list.filter(d=>d[2]===activeFilter);
+  if(activeSearch)list=list.filter(d=>d[0].toLowerCase().includes(activeSearch)||d[1].toLowerCase().includes(activeSearch)||d[8].toLowerCase().includes(activeSearch));
+  if(activeSortMode==='cheap')list=[...list].sort((a,b)=>calcRow(a).total3-calcRow(b).total3);
+  else if(activeSortMode==='expensive')list=[...list].sort((a,b)=>calcRow(b).total3-calcRow(a).total3);
+  else if(activeSortMode==='nights_desc')list=[...list].sort((a,b)=>b[6]-a[6]);
+  else if(activeSortMode==='az')list=[...list].sort((a,b)=>a[0].localeCompare(b[0]));
+  return list;
+}
+
+function chipCls(c){return{international:'chip-intl',india:'chip-india',adventure:'chip-adventure',experience:'chip-experience',festival:'chip-festival'}[c]||'chip-intl';}
+function chipLbl(c){return{international:'🌍 International',india:'🇮🇳 India',adventure:'🏔 Adventure',experience:'🎡 Experience',festival:'🎉 Festival'}[c]||c;}
+
+function renderAll(){
+  const list=getFiltered();
+  const grid=document.getElementById('cards');
+  grid.innerHTML='';
+  let totalNights=0,totalPP=0,total3all=0;
+  list.forEach((d,i)=>{
+    const r=calcRow(d);
+    totalNights+=r.nights; totalPP+=r.per1; total3all+=r.total3;
+    const div=document.createElement('div');
+    div.className='card';
+    div.style.animationDelay=(i%24*0.025)+'s';
+    div.innerHTML=`
+      <div class="card-top">
+        <div class="card-emoji">${d[3]}</div>
+        <div class="card-title-block">
+          <div class="card-name">${d[0]}</div>
+          <div class="card-loc">📍 ${d[1]}</div>
+          <span class="cat-chip ${chipCls(d[2])}">${chipLbl(d[2])}</span>
+        </div>
+      </div>
+      <div class="breakdown">
+        <div class="bd-row">
+          <div class="bd-cell"><div class="bd-label">🌙 Nights</div><div class="bd-val nights-val">${r.nights} nights</div></div>
+          <div class="bd-cell"><div class="bd-label">✈️ Flight (RT)</div><div class="bd-val flight-val">${fmtINR(r.f2050)}</div></div>
+          <div class="bd-cell"><div class="bd-label">🏨 Per Night</div><div class="bd-val hotel-val">${fmtINR(r.h2050)}</div></div>
+        </div>
+        <div class="bd-row">
+          <div class="bd-cell"><div class="bd-label">🏨 Hotel Total</div><div class="bd-val hotel-val">${fmtINR(r.hotelTotal)}</div></div>
+          <div class="bd-cell"><div class="bd-label">🎒 Activities</div><div class="bd-val activity-val">${fmtINR(r.a2050)}</div></div>
+          <div class="bd-cell"><div class="bd-label">👤 1 Person Total</div><div class="bd-val per1-val">${fmtINR(r.per1)}</div></div>
+        </div>
+      </div>
+      <div class="total-row">
+        <div class="total-cell"><div class="total-label">👤 Per Person</div><div class="total-val tv-per">${fmtINR(r.per1)}</div></div>
+        <div class="total-cell"><div class="total-label">👤 Per Person Total</div><div class="total-val tv-all">${fmtINR(r.total3)}</div></div>
+      </div>
+      <div class="card-note">💡 ${d[8]}</div>
+    `;
+    grid.appendChild(div);
+  });
+  document.getElementById('res-info').textContent=`Showing ${list.length} destination${list.length!==1?'s':''} · ${totalNights} total nights`;
+  document.getElementById('s-count').textContent=list.length;
+  document.getElementById('s-nights').textContent=totalNights+' nights';
+  document.getElementById('s-pp').textContent=fmtINR(totalPP);
+  document.getElementById('s-total').textContent=fmtINR(total3all);
+  document.getElementById('gt-num').textContent=total3all.toLocaleString('en-IN');
+  document.getElementById('gt-d').textContent=list.length;
+  document.getElementById('gt-n').textContent=totalNights;
+  document.getElementById('gt-pp').textContent=fmtINR(totalPP);
+}
+
+function doFilter(cat,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeFilter=cat;activeSearch='';document.getElementById('sbox').value='';renderAll();}
+function doSearch(v){activeSearch=v.toLowerCase();renderAll();}
+function doSort(v){activeSortMode=v;renderAll();}
+renderAll();
+
+// SIP CALCULATOR
+function sipCorpus(monthlySIP, annualReturn, months) {
+  const r = annualReturn / 100 / 12;
+  let corpus = 0;
+  for (let m = 0; m < months; m++) corpus = corpus * (1 + r) + monthlySIP;
+  return corpus;
+}
+
+function monthsToGoal(monthlySIP, annualReturn, goal) {
+  const r = annualReturn / 100 / 12;
+  let corpus = 0;
+  let months = 0;
+  while (corpus < goal && months < 600) { corpus = corpus * (1 + r) + monthlySIP; months++; }
+  return months >= 600 ? null : months;
+}
+
+function calcSIP() {
+  const age = parseInt(document.getElementById('sip-age').value) || 19;
+  const jobAge = parseInt(document.getElementById('sip-jobage').value) || 25;
+  const sip = parseInt(document.getElementById('sip-amount').value) || 15000;
+  const annualReturn = parseFloat(document.getElementById('sip-return').value) || 12;
+
+  let totalGoal = 0;
+  DATA.forEach(d => { totalGoal += calcRow(d).total3; });
+
+  const waitYears = Math.max(0, jobAge - age);
+  const currentYear = 2026;
+  const sipStartYear = currentYear + waitYears;
+  const r = annualReturn / 100 / 12;
+
+  const months = monthsToGoal(sip, annualReturn, totalGoal);
+  const yearsNeeded = months ? Math.ceil(months / 12) : 999;
+  const totalYears = waitYears + yearsNeeded;
+  const finishAge = age + totalYears;
+  const finishYear = currentYear + totalYears;
+  const corpus = months ? sipCorpus(sip, annualReturn, months) : 0;
+  const totalInvested = sip * (months || 0);
+  const wealthGained = corpus - totalInvested;
+
+  // Corpus at 10yr and 20yr from SIP start
+  const c10 = sipCorpus(sip, annualReturn, 120);
+  const c20 = sipCorpus(sip, annualReturn, 240);
+
+  // Min / Max / Expected scenarios
+  const scenarios = [
+    { label: 'Min (8% return)', rate: 8, color: '#E05252', icon: '🔴' },
+    { label: 'Expected (' + annualReturn + '% return)', rate: annualReturn, color: '#F5C842', icon: '🎯' },
+    { label: 'Max (14% return)', rate: 14, color: '#3ECF8E', icon: '🟢' }
+  ];
+
+  let minMaxHtml = '';
+  scenarios.forEach(sc => {
+    const m = monthsToGoal(sip, sc.rate, totalGoal);
+    const yrs = m ? Math.ceil(m / 12) : null;
+    const finAge = yrs ? age + waitYears + yrs : null;
+    const finYr = yrs ? currentYear + waitYears + yrs : null;
+    minMaxHtml += `
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">${sc.icon} ${sc.label}</div>
+        <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:${sc.color};line-height:1;">${yrs ? yrs + ' yrs' : 'N/A'}</div>
+        ${yrs ? `<div style="font-size:10px;color:var(--muted);margin-top:4px;">Age ${finAge} · Year ${finYr}</div>` : `<div style="font-size:10px;color:var(--red);margin-top:4px;">Goal unreachable at this SIP</div>`}
+      </div>`;
+  });
+  document.getElementById('minmax-grid').innerHTML = minMaxHtml;
+
+  const mMin = monthsToGoal(sip, 8, totalGoal);
+  const mMax = monthsToGoal(sip, 14, totalGoal);
+  const yMin = mMin ? Math.ceil(mMin/12) : '?';
+  const yMax = mMax ? Math.ceil(mMax/12) : '?';
+  const diff = (mMin && mMax) ? (Math.ceil(mMin/12) - Math.ceil(mMax/12)) : null;
+  document.getElementById('minmax-note').innerHTML =
+    `📌 <strong>Iska matlab:</strong> Agar market ne underperform kiya (8%) toh goal <strong style="color:var(--red);">${yMin} saal</strong> mein milega. Agar market ne acha kiya (14%) toh sirf <strong style="color:var(--green);">${yMax} saal</strong> mein. ${diff ? `Difference = <strong>${diff} saal</strong> — yeh market risk hai.` : ''}<br>
+    <span style="color:rgba(255,255,255,0.3);">In between jo bhi scenario ho, reality wahan kahin hogi. Isliye regular SIP + patience = key to success.</span>`;
+
+  // Results strip
+  document.getElementById('sip-results').innerHTML = `
+    <div class="sr-card"><div class="sr-l">🎯 Goal (2050 prices)</div><div class="sr-v gold">${fmtINR(Math.round(totalGoal))}</div></div>
+    <div class="sr-card"><div class="sr-l">💰 Monthly SIP</div><div class="sr-v purple">${fmtINR(sip)}</div></div>
+    <div class="sr-card"><div class="sr-l">⏳ SIP Duration</div><div class="sr-v blue">${yearsNeeded < 999 ? yearsNeeded + ' yrs' : 'SIP badhaao'}</div></div>
+    <div class="sr-card"><div class="sr-l">🏁 Finish Age</div><div class="sr-v ${finishAge <= 50 ? 'green' : 'sred'}">${finishAge < 999 ? finishAge + ' yrs' : '—'}</div></div>
+    <div class="sr-card"><div class="sr-l">📅 Finish Year</div><div class="sr-v gold">${finishYear < 3000 ? finishYear : '—'}</div></div>
+    <div class="sr-card"><div class="sr-l">📥 Total Invested</div><div class="sr-v blue">${fmtINR(totalInvested)}</div></div>
+    <div class="sr-card"><div class="sr-l">📈 Returns Earned</div><div class="sr-v green">${fmtINR(Math.round(wealthGained))}</div></div>
+    <div class="sr-card"><div class="sr-l">🏦 Final Corpus</div><div class="sr-v purple">${fmtINR(Math.round(corpus))}</div></div>
+  `;
+
+  // Progress milestones
+  const milestones = [
+    { label: '10 yr SIP', corpus: c10 },
+    { label: '20 yr SIP', corpus: c20 },
+    { label: 'Goal', corpus: totalGoal }
+  ];
+  let goalHtml = '';
+  milestones.forEach(m => {
+    const pct = Math.min(100, Math.round(m.corpus / totalGoal * 100));
+    goalHtml += `
+      <div class="sip-goal-bar">
+        <div class="gb-title">After <strong style="color:var(--purple)">${m.label}</strong> — Corpus: <strong style="color:var(--gold)">${fmtINR(Math.round(m.corpus))}</strong></div>
+        <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="gb-meta"><span>${pct}% of ${fmtINR(Math.round(totalGoal))} goal</span><span>${fmtINR(Math.round(m.corpus))}</span></div>
+      </div>`;
+  });
+  document.getElementById('sip-goals-wrap').innerHTML = goalHtml;
+
+  // 10yr / 20yr Explainer
+  const c10_8 = sipCorpus(sip, 8, 120);
+  const c10_14 = sipCorpus(sip, 14, 120);
+  const c20_8 = sipCorpus(sip, 8, 240);
+  const c20_14 = sipCorpus(sip, 14, 240);
+  const pct10 = Math.min(100, Math.round(c10 / totalGoal * 100));
+  const pct20 = Math.min(100, Math.round(c20 / totalGoal * 100));
+
+  document.getElementById('yr-explain').innerHTML = `
+    <strong style="color:var(--blue);">After 10 Years of SIP</strong> (Job shuru se, age ${jobAge+10}, year ${sipStartYear+10})<br>
+    Tujhe expect karna chahiye corpus: <strong style="color:var(--gold);">${fmtINR(Math.round(c10))}</strong> at ${annualReturn}% return<br>
+    <span style="color:var(--muted);">Pessimistic (8%): ${fmtINR(Math.round(c10_8))} &nbsp;·&nbsp; Optimistic (14%): ${fmtINR(Math.round(c10_14))}</span><br>
+    <span style="color:var(--green);">→ Yeh ${pct10}% of your total bucket list goal hai.</span> ${pct10 < 50 ? 'Abhi aadhe se kam — but compounding abhi <em>warm up phase</em> mein hai.' : pct10 < 100 ? 'Aadha se zyaada goal cover — great progress!' : '🎉 Goal already achieved!'}<br><br>
+    <strong style="color:var(--blue);">After 20 Years of SIP</strong> (age ${jobAge+20}, year ${sipStartYear+20})<br>
+    Corpus: <strong style="color:var(--gold);">${fmtINR(Math.round(c20))}</strong> at ${annualReturn}% return<br>
+    <span style="color:var(--muted);">Pessimistic (8%): ${fmtINR(Math.round(c20_8))} &nbsp;·&nbsp; Optimistic (14%): ${fmtINR(Math.round(c20_14))}</span><br>
+    <span style="color:var(--green);">→ Yeh ${pct20}% of your total goal hai.</span> ${pct20 >= 100 ? '✅ <strong>Goal achieve ho gaya 20 saal mein!</strong>' : `${Math.round(totalGoal - c20) > 0 ? fmtINR(Math.round(totalGoal - c20)) + ' abhi bhi baaki hai — SIP continue karo.' : ''}`}<br><br>
+    <span style="color:rgba(255,255,255,0.3);font-size:10px;">💡 <strong>Compounding secret:</strong> 10yr se 20yr tak corpus roughly 3x ho jaata hai (same monthly investment pe), kyunki returns pe returns milte hain. Yeh "snowball effect" hai — pehle 10 saal slow lagte hain, agli 10 mein magic hota hai.</span>
+  `;
+
+  // Timeline text
+  const emoji2050 = finishYear <= 2050 ? '✅' : '⚠️';
+  document.getElementById('sip-timeline').innerHTML = `
+    <strong>📍 Your Journey</strong><br>
+    <span class="ms">Age ${age} · 2026</span> Tu abhi ${age} ka hai — enjoy life, padhai kar, skills build kar.<br>
+    <span class="ms">Age ${jobAge} · ${sipStartYear}</span> Job lagi! ₹${(sip/1000).toFixed(0)}K/month SIP shuru. Nifty50 index fund recommended.<br>
+    <span class="ms">Age ${jobAge+10} · ${sipStartYear+10}</span> 10 saal baad corpus: <strong>${fmtINR(Math.round(c10))}</strong> (range: ${fmtINR(Math.round(c10_8))}–${fmtINR(Math.round(c10_14))})<br>
+    <span class="ms">Age ${jobAge+20} · ${sipStartYear+20}</span> 20 saal baad corpus: <strong>${fmtINR(Math.round(c20))}</strong> (range: ${fmtINR(Math.round(c20_8))}–${fmtINR(Math.round(c20_14))})<br>
+    <span class="ms">${emoji2050} Age ${finishAge < 999 ? finishAge : '??'} · ${finishYear < 3000 ? finishYear : '??'}</span> <strong>GOAL: ${fmtINR(Math.round(corpus || totalGoal))}</strong> — Bucket list complete karne ka time! 🌍<br><br>
+    ${finishYear <= 2050 ? '🎉 <strong style="color:var(--green)">2050 se pehle goal achieve ho jayega!</strong> Tera plan ekdum solid hai.' : finishYear < 3000 ? `⚠️ <strong style="color:#FF6B6B">2050 tak ${finishYear-2050} saal baad goal milega.</strong> SIP amount badhao ya return target adjust karo.` : '⚠️ <strong style="color:#FF6B6B">Monthly SIP bahut kam hai.</strong> Badhao.'}
+    <br><span style="color:var(--muted);font-size:10px">Note: ${annualReturn}% annual return = ${annualReturn===12 ? 'realistic' : annualReturn < 12 ? 'conservative' : 'optimistic'} estimate. Past returns ≠ future guarantee. Invest via direct mutual funds (Zerodha Coin / Groww). Consider index funds for lower cost & diversification.</span>
+  `;
+}
+
+calcSIP();
+</script>
+</body>
+</html>
