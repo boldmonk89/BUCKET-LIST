@@ -130,30 +130,54 @@ button,input,select,textarea{font-family:inherit;}
 .btn-add{background:var(--green);color:#000;}
 .modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;}
 .custom-badge{display:inline-block;font-size:10px;background:rgba(62,207,142,0.15);border:1px solid rgba(62,207,142,0.3);color:#5DD4A0;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;vertical-align:middle;}
-/* SIP Calculator */
-.sip-section{max-width:900px;margin:32px auto 0;background:linear-gradient(135deg,#0A0E1F 0%,#110A1F 100%);border:1px solid rgba(155,109,255,0.3);border-radius:20px;padding:36px;text-align:center;}
-.sip-section h2{font-family:'Syne',sans-serif;font-size:16px;letter-spacing:0;color:var(--purple);margin-bottom:6px;}
-.sip-sub{color:var(--muted);font-size:12px;margin-bottom:28px;}
-.sip-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px;text-align:left;}
-.sip-field{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
-.sip-field label{font-size:11px;letter-spacing:0;text-transform:none;color:var(--muted);display:block;margin-bottom:8px;}
-.sip-field input{width:100%;background:transparent;border:none;outline:none;font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--text);}
-.sip-field input::-webkit-inner-spin-button{-webkit-appearance:none;}
-.sip-field .sip-hint{font-size:10px;color:var(--muted);margin-top:4px;}
-.sip-result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
-.sr-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:16px;}
-.sr-l{font-size:11px;letter-spacing:0;text-transform:none;color:var(--muted);margin-bottom:6px;}
-.sr-v{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;}
-.sr-v.purple{color:var(--purple)}.sr-v.gold{color:var(--gold)}.sr-v.green{color:var(--green)}.sr-v.sred{color:#FF6B6B;}.sr-v.blue{color:var(--blue)}
-.sip-goal-bar{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;text-align:left;}
-.gb-title{font-size:11px;color:var(--sub);margin-bottom:10px;}
+/* ---------- Planner panels (Inflation + SIP) ---------- */
+.panel{max-width:900px;margin:28px auto 0;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;}
+.panel h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px;}
+.panel h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:26px 0 4px;}
+.panel-sub{color:var(--sub);font-size:13px;line-height:1.6;margin-bottom:20px;max-width:640px;}
+.panel-hint{color:var(--muted);font-size:12px;margin-bottom:12px;}
+.panel-note{color:var(--muted);font-size:12px;line-height:1.6;margin-top:22px;padding-top:14px;border-top:1px solid var(--border);}
+.panel-inflation{border-color:rgba(245,200,66,0.25);}
+.panel-sip{border-color:rgba(155,109,255,0.3);}
+.panel-sip h2{color:var(--purple);}
+.panel-inflation h2{color:var(--gold);}
+.pl-slider-row{display:flex;align-items:center;gap:14px;max-width:600px;margin-bottom:10px;}
+.pl-slider-row input{flex:1;accent-color:var(--gold);height:6px;cursor:pointer;}
+.pl-slider-row span{font-size:12px;color:var(--muted);white-space:nowrap;}
+.pl-big{font-family:'Syne',sans-serif;font-size:15px;color:var(--text);margin:8px 0 14px;}
+.pl-big strong{color:var(--gold);font-size:26px;font-weight:800;margin-right:4px;}
+.pl-big em{font-style:normal;color:var(--orange);font-weight:700;}
+.pl-presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+.pl-preset{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--sub);padding:7px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:border-color .15s,color .15s;}
+.pl-preset:hover{border-color:rgba(255,255,255,0.25);color:var(--text);}
+.pl-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px;}
+.pl-field{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:12px 14px;}
+.pl-field label{display:block;font-size:12px;color:var(--sub);margin-bottom:6px;}
+.pl-field input{width:100%;background:transparent;border:none;outline:none;font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--text);}
+.pl-field input:focus-visible{outline:none;}
+.pl-field:focus-within{border-color:var(--purple);}
+.pl-field small{display:block;font-size:11px;color:var(--muted);margin-top:2px;}
+.pl-answer{background:rgba(155,109,255,0.08);border:1px solid rgba(155,109,255,0.3);border-radius:14px;padding:18px 20px;margin:20px 0 14px;font-size:15px;line-height:1.7;}
+.pl-answer strong{color:var(--gold);}
+.pl-answer .ok{color:var(--green);font-weight:600;}
+.pl-answer .warn{color:#FF8C8C;font-weight:600;}
+.pl-answer .help{display:block;margin-top:8px;font-size:13px;color:var(--sub);}
+.pl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;}
+.pl-stat{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+.pl-stat .l{font-size:12px;color:var(--muted);margin-bottom:4px;}
+.pl-stat .v{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;}
+.pl-three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;}
+.pl-case{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+.pl-case .l{font-size:12px;color:var(--muted);margin-bottom:6px;}
+.pl-case .v{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1.1;}
+.pl-case .s{font-size:12px;color:var(--muted);margin-top:4px;}
+.pl-bar{margin-top:12px;}
+.pl-bar .t{font-size:13px;color:var(--sub);margin-bottom:8px;}
+.pl-bar .t strong{color:var(--gold);}
 .progress-wrap{background:rgba(255,255,255,0.06);border-radius:6px;height:8px;overflow:hidden;margin-bottom:6px;}
-.progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--purple),var(--gold));transition:width 0.6s ease;}
-.gb-meta{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);}
-.sip-timeline{background:rgba(255,255,255,0.02);border:1px dashed rgba(155,109,255,0.2);border-radius:10px;padding:14px 18px;font-size:11.5px;color:var(--sub);line-height:1.8;text-align:left;}
-.sip-timeline strong{color:var(--purple);}
-.ms{display:inline-block;background:rgba(155,109,255,0.12);border:1px solid rgba(155,109,255,0.3);color:#BE9FFF;padding:2px 9px;border-radius:4px;font-size:10px;margin:1px 2px;}
-@media(max-width:480px){.strip{display:grid;grid-template-columns:1fr 1fr;overflow:visible;}.strip-item{min-width:0;padding:12px 8px;border-bottom:1px solid var(--border);}.strip-item:nth-child(2n){border-right:none;}.info-box{display:grid;grid-template-columns:1fr 1fr;width:100%;}.ib{border-bottom:1px solid var(--border);}.ib:nth-child(2n){border-right:none;}.ib:last-child{grid-column:1/-1;border-bottom:none;}.grand-grid{grid-template-columns:1fr 1fr;}.cards{grid-template-columns:1fr;}.sip-inputs{grid-template-columns:1fr 1fr;}.sip-result-grid{grid-template-columns:1fr 1fr;}}
+.progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--purple),var(--gold));transition:width .5s ease;}
+.pl-bar .m{font-size:12px;color:var(--muted);}
+@media(max-width:480px){.strip{display:grid;grid-template-columns:1fr 1fr;overflow:visible;}.strip-item{min-width:0;padding:12px 8px;border-bottom:1px solid var(--border);}.strip-item:nth-child(2n){border-right:none;}.info-box{display:grid;grid-template-columns:1fr 1fr;width:100%;}.ib{border-bottom:1px solid var(--border);}.ib:nth-child(2n){border-right:none;}.ib:last-child{grid-column:1/-1;border-bottom:none;}.grand-grid{grid-template-columns:1fr 1fr;}.cards{grid-template-columns:1fr;}.pl-three{grid-template-columns:1fr;}.panel{padding:20px 16px;}}
 @media(max-width:640px){.tool-row{flex-wrap:wrap}.search-inp{flex:1 1 100%}.sort-sel{flex:1}.chip-label{flex-basis:auto}.ib{padding:10px 14px}.hero{padding:34px 16px 26px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
@@ -235,111 +259,72 @@ button,input,select,textarea{font-family:inherit;}
     📌 <strong>Note:</strong> 2050 projected prices = 2025 base × <span id="disc-mult">4.0</span> (<span id="disc-inf">3.5</span>% annual compound inflation over 25 years). Each card shows: ✈️ Round-trip flight from Delhi · 🌙 Nights stay · 🏨 Hotel per night + total · 🎒 Activities · 👤 Per person total. Prices are indicative estimates — verify on actual booking platforms.
   </div>
 
-  <!-- INFLATION CONTROL PANEL -->
-  <div class="sip-section" style="margin-top:32px;border-color:rgba(245,200,66,0.3);background:linear-gradient(135deg,#0E0A00 0%,#1A1200 100%);">
-    <h2 style="color:var(--gold);">🌡️ Inflation Rate Control · Adjust 2050 Prices</h2>
-    <div class="sip-sub">Kitna inflation assume karna hai? Slider adjust karo — saare card prices live update ho jayenge.</div>
-
-    <div style="max-width:600px;margin:0 auto 20px;">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;">
-        <span style="font-size:11px;color:var(--muted);min-width:80px;text-align:right;">Optimistic<br><span style="color:var(--green);font-family:'Syne',sans-serif;font-size:13px;">2%</span></span>
-        <input type="range" id="inf-slider" min="2" max="10" step="0.5" value="3.5"
-          style="flex:1;accent-color:var(--gold);height:6px;cursor:pointer;"
-          oninput="updateInflation(this.value)">
-        <span style="font-size:11px;color:var(--muted);min-width:80px;">Pessimistic<br><span style="color:var(--red);font-family:'Syne',sans-serif;font-size:13px;">10%</span></span>
-      </div>
-      <div style="text-align:center;margin-bottom:8px;">
-        <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--gold);" id="inf-display">3.5%</span>
-        <span style="color:var(--muted);font-size:12px;"> annual inflation · Multiplier: </span>
-        <span style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--orange);" id="mult-display">×4.0</span>
-        <span style="color:var(--muted);font-size:11px;"> (over 25 yrs)</span>
-      </div>
+  <!-- INFLATION -->
+  <section class="panel panel-inflation">
+    <h2>Inflation: 2050 mein prices kitni badhengi?</h2>
+    <p class="panel-sub">Inflation matlab mehngai. Aaj jo trip ₹1 lakh ka hai, wo 2050 mein zyada mehnga hoga. Neeche slider hilao, upar ke saare prices turant badal jayenge.</p>
+    <div class="pl-slider-row">
+      <span>Kam: 2%</span>
+      <input type="range" id="inf-slider" min="2" max="10" step="0.5" value="3.5" aria-label="Inflation rate" oninput="updateInflation(this.value)">
+      <span>Zyada: 10%</span>
     </div>
-
-    <!-- Inflation scenario pills -->
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">
-      <button onclick="setInf(2)" style="background:rgba(62,207,142,0.12);border:1px solid rgba(62,207,142,0.3);color:#5DD4A0;padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟢 2% — Best case (Stable world)</button>
-      <button onclick="setInf(3.5)" style="background:rgba(245,200,66,0.12);border:1px solid rgba(245,200,66,0.3);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟡 3.5% — Realistic (India travel avg)</button>
-      <button onclick="setInf(6)" style="background:rgba(255,140,66,0.12);border:1px solid rgba(255,140,66,0.3);color:var(--orange);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟠 6% — High (USD/EUR pressure)</button>
-      <button onclick="setInf(8)" style="background:rgba(224,82,82,0.12);border:1px solid rgba(224,82,82,0.3);color:var(--red);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🔴 8% — Worst case (Rupee falls)</button>
+    <div class="pl-big"><strong id="inf-display">3.5%</strong> saalana mehngai &rarr; prices <em id="mult-display">&times;4.0</em> ho jayengi (25 saal mein)</div>
+    <div class="panel-hint" id="inf-example"></div>
+    <div class="pl-presets">
+      <button class="pl-preset" onclick="setInf(2)">2% &middot; Sab stable</button>
+      <button class="pl-preset" onclick="setInf(3.5)">3.5% &middot; Normal (default)</button>
+      <button class="pl-preset" onclick="setInf(6)">6% &middot; Mehngai zyada</button>
+      <button class="pl-preset" onclick="setInf(8)">8% &middot; Rupee kamzor</button>
     </div>
+    <p class="panel-note">Foreign trips mein dollar/euro ki mehngai bhi lagti hai, isliye unke liye thoda zyada rate (5-6%) realistic hai.</p>
+  </section>
 
-    <!-- Inflation explainer -->
-    <div style="background:rgba(255,255,255,0.02);border:1px dashed rgba(245,200,66,0.15);border-radius:10px;padding:14px 18px;font-size:11px;color:var(--sub);line-height:1.8;text-align:left;max-width:700px;margin:0 auto;">
-      <strong style="color:var(--gold);">📖 Inflation kya hota hai isme?</strong><br>
-      Agar aaj Bali jaane ka total ₹1L hai, toh 25 saal baad wahi trip <em>inflation ke saath</em> kitne ki padegi?<br>
-      Formula: <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;color:#BE9FFF;">Future Price = Today's Price × (1 + inflation%)²⁵</code><br>
-      <span style="color:var(--green);">3.5%</span> pe → ×4.0 multiplier | <span style="color:var(--orange);">6%</span> pe → ×4.3 multiplier | <span style="color:var(--red);">8%</span> pe → ×6.8 multiplier<br>
-      <span style="color:var(--muted);">International trips pe dollar/euro inflation bhi lagti hai — isliye higher rate zyada realistic hai for foreign trips.</span>
-    </div>
-  </div>
+  <!-- SIP PLANNER -->
+  <section class="panel panel-sip">
+    <h2>SIP planner: bucket list ke liye kitna invest karna hai?</h2>
+    <p class="panel-sub">SIP matlab har mahine ek fixed amount mutual fund mein daalna. Apni details daalo, aur neeche pata chalega ki poora bucket list kitne saal mein ho jayega.</p>
 
-  <!-- SIP CALCULATOR UPGRADED -->
-  <div class="sip-section">
-    <h2>💰 SIP Goal Calculator · Your Dream Fund</h2>
-    <div class="sip-sub">Tu abhi 19 ka hai · Job 25 pe lagegi · Tab SIP shuru · Kitne saal lagenge poora bucket list fund karne mein?</div>
-    <div class="sip-inputs">
-      <div class="sip-field">
-        <label>📅 Current Age</label>
+    <div class="pl-inputs">
+      <div class="pl-field">
+        <label for="sip-age">Aapki abhi ki umar</label>
         <input type="number" id="sip-age" value="19" min="10" max="40" oninput="calcSIP()">
-        <div class="sip-hint">years old (2026)</div>
+        <small>saal</small>
       </div>
-      <div class="sip-field">
-        <label>💼 Job Start Age</label>
+      <div class="pl-field">
+        <label for="sip-jobage">Kamai kis umar se shuru hogi</label>
         <input type="number" id="sip-jobage" value="25" min="18" max="40" oninput="calcSIP()">
-        <div class="sip-hint">SIP starts from this age</div>
+        <small>SIP isi umar se shuru hogi</small>
       </div>
-      <div class="sip-field">
-        <label>💸 Monthly SIP (₹)</label>
+      <div class="pl-field">
+        <label for="sip-amount">Har mahine kitna invest karoge</label>
         <input type="number" id="sip-amount" value="15000" min="500" oninput="calcSIP()">
-        <div class="sip-hint">invested every month</div>
+        <small>rupaye per month</small>
       </div>
-      <div class="sip-field">
-        <label>📈 Expected Return %</label>
+      <div class="pl-field">
+        <label for="sip-return">Saal ka expected return</label>
         <input type="number" id="sip-return" value="12" min="1" max="30" step="0.5" oninput="calcSIP()">
-        <div class="sip-hint">12% = Nifty50 avg (realistic)</div>
+        <small>% per year (12% = Nifty 50 ka average)</small>
       </div>
     </div>
-
-    <!-- Min/Max scenario buttons -->
-    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px;">
-      <span style="font-size:11px;color:var(--muted);align-self:center;margin-right:4px;">Return scenario:</span>
-      <button onclick="setReturn(8)" style="background:rgba(224,82,82,0.1);border:1px solid rgba(224,82,82,0.3);color:var(--red);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🔴 8% — Conservative (FD/Debt)</button>
-      <button onclick="setReturn(10)" style="background:rgba(255,140,66,0.1);border:1px solid rgba(255,140,66,0.3);color:var(--orange);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟠 10% — Moderate</button>
-      <button onclick="setReturn(12)" style="background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟡 12% — Realistic (Nifty50)</button>
-      <button onclick="setReturn(14)" style="background:rgba(62,207,142,0.1);border:1px solid rgba(62,207,142,0.3);color:var(--green);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">🟢 14% — Optimistic (Mid/Small cap)</button>
+    <div class="pl-presets">
+      <button class="pl-preset" onclick="setReturn(8)">8% &middot; Safe (FD / debt)</button>
+      <button class="pl-preset" onclick="setReturn(12)">12% &middot; Normal (index fund)</button>
+      <button class="pl-preset" onclick="setReturn(14)">14% &middot; Best case (mid/small cap)</button>
     </div>
 
-    <div class="sip-result-grid" id="sip-results"></div>
+    <div class="pl-answer" id="sip-answer"></div>
+    <div class="pl-stats" id="sip-results"></div>
 
-    <!-- Min/Max Years Summary Box -->
-    <div id="minmax-box" style="background:rgba(255,255,255,0.02);border:1px solid rgba(155,109,255,0.2);border-radius:14px;padding:20px;margin-bottom:16px;text-align:left;">
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:14px;">⚡ Min · Expected · Max Years to Goal</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" id="minmax-grid"></div>
-      <div style="margin-top:12px;font-size:10px;color:var(--muted);line-height:1.6;" id="minmax-note"></div>
-    </div>
+    <h3>Agar return kam ya zyada mila toh?</h3>
+    <div class="panel-hint">Market upar-neeche hota hai. Isse goal tak pahunchne ka time badal jata hai.</div>
+    <div class="pl-three" id="minmax-grid"></div>
 
+    <h3>Paisa kaise badhta hai</h3>
+    <div class="panel-hint">Same SIP, lekin time ke saath paisa tezi se badhta hai, kyunki returns par bhi returns milte hain.</div>
     <div id="sip-goals-wrap"></div>
 
-    <!-- 10yr / 20yr Explained Section -->
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(74,144,226,0.2);border-radius:14px;padding:20px;margin-bottom:16px;text-align:left;">
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">📊 10 Year & 20 Year Corpus — Kya Matlab Hai?</div>
-      <div id="yr-explain" style="font-size:11.5px;color:var(--sub);line-height:1.9;"></div>
-    </div>
-
-    <div class="sip-timeline" id="sip-timeline"></div>
-
-    <!-- Risk disclaimer -->
-    <div style="margin-top:14px;background:rgba(224,82,82,0.04);border:1px dashed rgba(224,82,82,0.2);border-radius:10px;padding:12px 16px;font-size:10.5px;color:var(--muted);line-height:1.7;text-align:left;">
-      ⚠️ <strong style="color:var(--red);">Risk Disclaimer:</strong> Yeh sab <em>projections</em> hain — guarantee nahi. Market upar-neeche jaata hai.<br>
-      • <strong>8% return</strong> — agar market slow raha / recession aaya → time badh sakta hai<br>
-      • <strong>12% return</strong> — Nifty50 ka 20yr historical avg, future mein same nahi hoga necessarily<br>
-      • <strong>14% return</strong> — mid/small cap funds mein possible, but <em>high volatility</em> — value 50% neeche bhi ja sakti hai temporarily<br>
-      • Rupee depreciation international trips mahengi kar sakti hai even if corpus achieve ho gaya<br>
-      <span style="color:rgba(255,255,255,0.3);">Mutual fund investments are subject to market risk. Ye calculator financial advice nahi hai — ek certified advisor se consult karo before major decisions.</span>
-    </div>
-  </div>
-
+    <p class="panel-note">Ye sirf andaaza hai, guarantee nahi. Mutual fund market risk ke under hote hain aur ye financial advice nahi hai. Bada decision lene se pehle kisi certified advisor se baat karo.</p>
+  </section>
 </div>
 
 <button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -440,6 +425,7 @@ function updateInflation(val) {
   document.getElementById('inf-slider').value = val;
   document.getElementById('disc-inf').textContent = val;
   document.getElementById('disc-mult').textContent = INF.toFixed(1);
+  document.getElementById('inf-example').textContent = 'Example: aaj ka ₹1,00,000 ka trip 2050 mein lagbhag ₹' + Math.round(INF*100000).toLocaleString('en-IN') + ' ka padega.';
   renderAll();
   calcSIP();
 }
@@ -915,124 +901,81 @@ function calcSIP() {
   const jobAge = parseInt(document.getElementById('sip-jobage').value) || 25;
   const sip = parseInt(document.getElementById('sip-amount').value) || 15000;
   const annualReturn = parseFloat(document.getElementById('sip-return').value) || 12;
+  const currentYear = 2026;
 
   let totalGoal = 0;
   DATA.forEach(d => { totalGoal += calcRow(d).total3; });
 
   const waitYears = Math.max(0, jobAge - age);
-  const currentYear = 2026;
   const sipStartYear = currentYear + waitYears;
-  const r = annualReturn / 100 / 12;
 
   const months = monthsToGoal(sip, annualReturn, totalGoal);
-  const yearsNeeded = months ? Math.ceil(months / 12) : 999;
-  const totalYears = waitYears + yearsNeeded;
-  const finishAge = age + totalYears;
-  const finishYear = currentYear + totalYears;
+  const yearsNeeded = months ? Math.ceil(months / 12) : null;
+  const finishAge = yearsNeeded ? age + waitYears + yearsNeeded : null;
+  const finishYear = yearsNeeded ? sipStartYear + yearsNeeded : null;
   const corpus = months ? sipCorpus(sip, annualReturn, months) : 0;
   const totalInvested = sip * (months || 0);
-  const wealthGained = corpus - totalInvested;
+  const returnsEarned = Math.max(0, corpus - totalInvested);
 
-  // Corpus at 10yr and 20yr from SIP start
-  const c10 = sipCorpus(sip, annualReturn, 120);
-  const c20 = sipCorpus(sip, annualReturn, 240);
+  // Monthly SIP needed to finish by 2050
+  const monthsTo2050 = Math.max(0, (2050 - sipStartYear) * 12);
+  const r = annualReturn / 100 / 12;
+  const needBy2050 = monthsTo2050 > 0 ? Math.ceil(totalGoal * r / (Math.pow(1 + r, monthsTo2050) - 1)) : null;
 
-  // Min / Max / Expected scenarios
-  const scenarios = [
-    { label: 'Min (8% return)', rate: 8, color: '#E05252', icon: '🔴' },
-    { label: 'Expected (' + annualReturn + '% return)', rate: annualReturn, color: '#F5C842', icon: '🎯' },
-    { label: 'Max (14% return)', rate: 14, color: '#3ECF8E', icon: '🟢' }
-  ];
+  // Main answer
+  let answer;
+  if (!yearsNeeded) {
+    answer = `Is SIP (<strong>${fmtINR(sip)}/month</strong>) se bucket list (<strong>${fmtINR(Math.round(totalGoal))}</strong>) 50 saal mein bhi poori nahi hogi. Monthly SIP badhao.`;
+  } else {
+    const late = finishYear - 2050;
+    answer = `Poore bucket list ke liye (<strong>${fmtINR(Math.round(totalGoal))}</strong>) aapko <strong>${yearsNeeded} saal</strong> SIP karni hogi.<br>
+      Aap <strong>${finishAge} saal</strong> ki umar mein (<strong>${finishYear}</strong> tak) sab kuch fund kar loge. ` +
+      (late <= 0
+        ? `<span class="ok">Ye 2050 se pehle hai.</span>`
+        : `<span class="warn">Ye 2050 ke ${late} saal baad hai.</span>`);
+    if (late > 0 && needBy2050) {
+      answer += `<span class="help">2050 tak poora karne ke liye har mahine lagbhag <strong>${fmtINR(needBy2050)}</strong> invest karna padega.</span>`;
+    }
+  }
+  document.getElementById('sip-answer').innerHTML = answer;
 
-  let minMaxHtml = '';
-  scenarios.forEach(sc => {
-    const m = monthsToGoal(sip, sc.rate, totalGoal);
-    const yrs = m ? Math.ceil(m / 12) : null;
-    const finAge = yrs ? age + waitYears + yrs : null;
-    const finYr = yrs ? currentYear + waitYears + yrs : null;
-    minMaxHtml += `
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">${sc.icon} ${sc.label}</div>
-        <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:${sc.color};line-height:1;">${yrs ? yrs + ' yrs' : 'N/A'}</div>
-        ${yrs ? `<div style="font-size:10px;color:var(--muted);margin-top:4px;">Age ${finAge} · Year ${finYr}</div>` : `<div style="font-size:10px;color:var(--red);margin-top:4px;">Goal unreachable at this SIP</div>`}
-      </div>`;
-  });
-  document.getElementById('minmax-grid').innerHTML = minMaxHtml;
-
-  const mMin = monthsToGoal(sip, 8, totalGoal);
-  const mMax = monthsToGoal(sip, 14, totalGoal);
-  const yMin = mMin ? Math.ceil(mMin/12) : '?';
-  const yMax = mMax ? Math.ceil(mMax/12) : '?';
-  const diff = (mMin && mMax) ? (Math.ceil(mMin/12) - Math.ceil(mMax/12)) : null;
-  document.getElementById('minmax-note').innerHTML =
-    `📌 <strong>Iska matlab:</strong> Agar market ne underperform kiya (8%) toh goal <strong style="color:var(--red);">${yMin} saal</strong> mein milega. Agar market ne acha kiya (14%) toh sirf <strong style="color:var(--green);">${yMax} saal</strong> mein. ${diff ? `Difference = <strong>${diff} saal</strong> — yeh market risk hai.` : ''}<br>
-    <span style="color:rgba(255,255,255,0.3);">In between jo bhi scenario ho, reality wahan kahin hogi. Isliye regular SIP + patience = key to success.</span>`;
-
-  // Results strip
+  // 3 simple numbers
   document.getElementById('sip-results').innerHTML = `
-    <div class="sr-card"><div class="sr-l">🎯 Goal (2050 prices)</div><div class="sr-v gold">${fmtINR(Math.round(totalGoal))}</div></div>
-    <div class="sr-card"><div class="sr-l">💰 Monthly SIP</div><div class="sr-v purple">${fmtINR(sip)}</div></div>
-    <div class="sr-card"><div class="sr-l">⏳ SIP Duration</div><div class="sr-v blue">${yearsNeeded < 999 ? yearsNeeded + ' yrs' : 'SIP badhaao'}</div></div>
-    <div class="sr-card"><div class="sr-l">🏁 Finish Age</div><div class="sr-v ${finishAge <= 50 ? 'green' : 'sred'}">${finishAge < 999 ? finishAge + ' yrs' : '—'}</div></div>
-    <div class="sr-card"><div class="sr-l">📅 Finish Year</div><div class="sr-v gold">${finishYear < 3000 ? finishYear : '—'}</div></div>
-    <div class="sr-card"><div class="sr-l">📥 Total Invested</div><div class="sr-v blue">${fmtINR(totalInvested)}</div></div>
-    <div class="sr-card"><div class="sr-l">📈 Returns Earned</div><div class="sr-v green">${fmtINR(Math.round(wealthGained))}</div></div>
-    <div class="sr-card"><div class="sr-l">🏦 Final Corpus</div><div class="sr-v purple">${fmtINR(Math.round(corpus))}</div></div>
+    <div class="pl-stat"><div class="l">Bucket list ka total kharcha</div><div class="v" style="color:var(--gold)">${fmtINR(Math.round(totalGoal))}</div></div>
+    <div class="pl-stat"><div class="l">Aap khud invest karoge</div><div class="v" style="color:var(--blue)">${yearsNeeded ? fmtINR(totalInvested) : '-'}</div></div>
+    <div class="pl-stat"><div class="l">Returns se milega</div><div class="v" style="color:var(--green)">${yearsNeeded ? fmtINR(Math.round(returnsEarned)) : '-'}</div></div>
   `;
 
-  // Progress milestones
-  const milestones = [
-    { label: '10 yr SIP', corpus: c10 },
-    { label: '20 yr SIP', corpus: c20 },
-    { label: 'Goal', corpus: totalGoal }
+  // Safe / your / best
+  const cases = [
+    { label: 'Safe (8%)', rate: 8, color: '#FF8C8C' },
+    { label: 'Aapka (' + annualReturn + '%)', rate: annualReturn, color: '#F5C842' },
+    { label: 'Best (14%)', rate: 14, color: '#3ECF8E' }
   ];
-  let goalHtml = '';
-  milestones.forEach(m => {
-    const pct = Math.min(100, Math.round(m.corpus / totalGoal * 100));
-    goalHtml += `
-      <div class="sip-goal-bar">
-        <div class="gb-title">After <strong style="color:var(--purple)">${m.label}</strong> — Corpus: <strong style="color:var(--gold)">${fmtINR(Math.round(m.corpus))}</strong></div>
-        <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div class="gb-meta"><span>${pct}% of ${fmtINR(Math.round(totalGoal))} goal</span><span>${fmtINR(Math.round(m.corpus))}</span></div>
-      </div>`;
-  });
-  document.getElementById('sip-goals-wrap').innerHTML = goalHtml;
+  document.getElementById('minmax-grid').innerHTML = cases.map(c => {
+    const m = monthsToGoal(sip, c.rate, totalGoal);
+    const y = m ? Math.ceil(m / 12) : null;
+    return `<div class="pl-case">
+      <div class="l">${c.label}</div>
+      <div class="v" style="color:${c.color}">${y ? y + ' saal' : 'Nahi hoga'}</div>
+      <div class="s">${y ? 'Umar ' + (age + waitYears + y) + ' · ' + (sipStartYear + y) : 'SIP badhao'}</div>
+    </div>`;
+  }).join('');
 
-  // 10yr / 20yr Explainer
-  const c10_8 = sipCorpus(sip, 8, 120);
-  const c10_14 = sipCorpus(sip, 14, 120);
-  const c20_8 = sipCorpus(sip, 8, 240);
-  const c20_14 = sipCorpus(sip, 14, 240);
-  const pct10 = Math.min(100, Math.round(c10 / totalGoal * 100));
-  const pct20 = Math.min(100, Math.round(c20 / totalGoal * 100));
-
-  document.getElementById('yr-explain').innerHTML = `
-    <strong style="color:var(--blue);">After 10 Years of SIP</strong> (Job shuru se, age ${jobAge+10}, year ${sipStartYear+10})<br>
-    Tujhe expect karna chahiye corpus: <strong style="color:var(--gold);">${fmtINR(Math.round(c10))}</strong> at ${annualReturn}% return<br>
-    <span style="color:var(--muted);">Pessimistic (8%): ${fmtINR(Math.round(c10_8))} &nbsp;·&nbsp; Optimistic (14%): ${fmtINR(Math.round(c10_14))}</span><br>
-    <span style="color:var(--green);">→ Yeh ${pct10}% of your total bucket list goal hai.</span> ${pct10 < 50 ? 'Abhi aadhe se kam — but compounding abhi <em>warm up phase</em> mein hai.' : pct10 < 100 ? 'Aadha se zyaada goal cover — great progress!' : '🎉 Goal already achieved!'}<br><br>
-    <strong style="color:var(--blue);">After 20 Years of SIP</strong> (age ${jobAge+20}, year ${sipStartYear+20})<br>
-    Corpus: <strong style="color:var(--gold);">${fmtINR(Math.round(c20))}</strong> at ${annualReturn}% return<br>
-    <span style="color:var(--muted);">Pessimistic (8%): ${fmtINR(Math.round(c20_8))} &nbsp;·&nbsp; Optimistic (14%): ${fmtINR(Math.round(c20_14))}</span><br>
-    <span style="color:var(--green);">→ Yeh ${pct20}% of your total goal hai.</span> ${pct20 >= 100 ? '✅ <strong>Goal achieve ho gaya 20 saal mein!</strong>' : `${Math.round(totalGoal - c20) > 0 ? fmtINR(Math.round(totalGoal - c20)) + ' abhi bhi baaki hai — SIP continue karo.' : ''}`}<br><br>
-    <span style="color:rgba(255,255,255,0.3);font-size:10px;">💡 <strong>Compounding secret:</strong> 10yr se 20yr tak corpus roughly 3x ho jaata hai (same monthly investment pe), kyunki returns pe returns milte hain. Yeh "snowball effect" hai — pehle 10 saal slow lagte hain, agli 10 mein magic hota hai.</span>
-  `;
-
-  // Timeline text
-  const emoji2050 = finishYear <= 2050 ? '✅' : '⚠️';
-  document.getElementById('sip-timeline').innerHTML = `
-    <strong>📍 Your Journey</strong><br>
-    <span class="ms">Age ${age} · 2026</span> Tu abhi ${age} ka hai — enjoy life, padhai kar, skills build kar.<br>
-    <span class="ms">Age ${jobAge} · ${sipStartYear}</span> Job lagi! ₹${(sip/1000).toFixed(0)}K/month SIP shuru. Nifty50 index fund recommended.<br>
-    <span class="ms">Age ${jobAge+10} · ${sipStartYear+10}</span> 10 saal baad corpus: <strong>${fmtINR(Math.round(c10))}</strong> (range: ${fmtINR(Math.round(c10_8))}–${fmtINR(Math.round(c10_14))})<br>
-    <span class="ms">Age ${jobAge+20} · ${sipStartYear+20}</span> 20 saal baad corpus: <strong>${fmtINR(Math.round(c20))}</strong> (range: ${fmtINR(Math.round(c20_8))}–${fmtINR(Math.round(c20_14))})<br>
-    <span class="ms">${emoji2050} Age ${finishAge < 999 ? finishAge : '??'} · ${finishYear < 3000 ? finishYear : '??'}</span> <strong>GOAL: ${fmtINR(Math.round(corpus || totalGoal))}</strong> — Bucket list complete karne ka time! 🌍<br><br>
-    ${finishYear <= 2050 ? '🎉 <strong style="color:var(--green)">2050 se pehle goal achieve ho jayega!</strong> Tera plan ekdum solid hai.' : finishYear < 3000 ? `⚠️ <strong style="color:#FF6B6B">2050 tak ${finishYear-2050} saal baad goal milega.</strong> SIP amount badhao ya return target adjust karo.` : '⚠️ <strong style="color:#FF6B6B">Monthly SIP bahut kam hai.</strong> Badhao.'}
-    <br><span style="color:var(--muted);font-size:10px">Note: ${annualReturn}% annual return = ${annualReturn===12 ? 'realistic' : annualReturn < 12 ? 'conservative' : 'optimistic'} estimate. Past returns ≠ future guarantee. Invest via direct mutual funds (Zerodha Coin / Groww). Consider index funds for lower cost & diversification.</span>
-  `;
+  // 10 and 20 year bars
+  const bars = [10, 20].map(yrs => {
+    const c = sipCorpus(sip, annualReturn, yrs * 12);
+    const pct = Math.min(100, Math.round(c / totalGoal * 100));
+    return `<div class="pl-bar">
+      <div class="t">${yrs} saal SIP ke baad <strong>${fmtINR(Math.round(c))}</strong> ban jayega</div>
+      <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="m">Ye total goal ka ${pct}% hai (umar ${jobAge + yrs}, saal ${sipStartYear + yrs})</div>
+    </div>`;
+  }).join('');
+  document.getElementById('sip-goals-wrap').innerHTML = bars;
 }
 
-calcSIP();
+updateInflation(currentInflationRate);
 </script>
 </body>
 </html>
